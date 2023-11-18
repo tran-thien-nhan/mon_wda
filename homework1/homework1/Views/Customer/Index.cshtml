@@ -1,0 +1,46 @@
+﻿@model IEnumerable<homework1.Models.Customer>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tailwind CSS Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto mt-5 p-4">
+        <h1 class="text-3xl font-bold mb-6">Customer List</h1>
+        <a asp-action="Create" class="bg-blue-500 text-white px-4 py-2 rounded mb-3 inline-block">Add Customer</a>
+        <table class="w-full border border-gray-300 shadow-md rounded-md">
+            <thead class="bg-gray-800 text-white">
+                <tr>
+                    <th class="py-2 px-4">Name</th>
+                    <th class="py-2 px-4">Birthday</th>
+                    <th class="py-2 px-4">Gender</th>
+                    <th class="py-2 px-4">Email</th>
+                    <th class="py-2 px-4">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Customer customer in Model)
+                {
+                    <tr>
+                        <td class="py-2 px-4">@customer.Name</td>
+                        <td class="py-2 px-4">@customer.Birthday</td>
+                        <td class="py-2 px-4">@customer.Gender</td>
+                        <td class="py-2 px-4">@customer.Email</td>
+                        <td class="py-2 px-4 space-x-2">
+                            <a asp-action="Delete" asp-route-id="@customer.Id" class="bg-red-500 text-white px-3 py-1 rounded">Delete</a>
+                            <a asp-action="Edit" asp-route-id="@customer.Id" class="bg-green-500 text-white px-3 py-1 rounded">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
+</body>
+</html>

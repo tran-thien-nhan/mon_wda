@@ -1,0 +1,44 @@
+﻿@model IEnumerable<day2_CodeFirst.Models.Student>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap 5 Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="mb-4">This is the Student Page</h1>
+        <a asp-action="Create" class="btn btn-primary mb-3">Create</a>
+        <table class="table table-hover table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Student stu in Model)
+                {
+                    <tr>
+                        <td>@stu.Name</td>
+                        <td>@stu.Email</td>
+                        <td>@stu.Phone</td>
+                        <td>
+                            <a asp-action="Delete" asp-route-id="@stu.Id" class="btn btn-danger">Delete</a>
+                            <a asp-action="Edit" asp-route-id="@stu.Id" class="btn btn-success">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
