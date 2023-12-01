@@ -1,0 +1,52 @@
+﻿@model Day5_HomeWork5.Models.Student
+
+@{
+    ViewData["Title"] = "Details";
+    string genderText = Model.Gender == true ? "male" : "female";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Student @Html.DisplayFor(model => model.Name)</h4>
+    <hr />
+    <div class="card">
+        <div class="card-header bg-primary">
+            <h4 class="text-white">INFORMATION</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Birthday)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Birthday)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Gender)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => genderText)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit</a> 
+            <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">Delete</a> 
+            <a asp-action="Index" class="btn btn-warning">Back to List</a>
+        </div>
+    </div>
+</div>
+

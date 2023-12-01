@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model IEnumerable<Day5_demoAuthorize.Models.Account>
+
+<h1>Account List</h1>
+
+<a asp-action="Create" asp-controller="Admin">Create</a>
+
+<table>
+    <tr>
+        <td>@Html.DisplayNameFor(m => m.Id)</td>
+        <td>@Html.DisplayNameFor(m => m.Usename)</td>
+        <td>@Html.DisplayNameFor(m => m.Fullname)</td>
+        <td>Role</td>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(mi => item.Id)</td>
+            <td>@Html.DisplayFor(mi => item.Usename)</td>
+            <td>@Html.DisplayFor(mi => item.Fullname)</td>
+            <td>
+                @foreach(var r in item.AccountRoles)
+                {
+                    <p>@r.Role.Name</p>
+                }
+            </td>
+        </tr>
+    }
+</table>
+

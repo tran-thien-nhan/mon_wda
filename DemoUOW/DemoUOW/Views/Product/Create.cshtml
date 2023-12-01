@@ -1,0 +1,39 @@
+﻿@model DemoUOW.Models.Product
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h1>Create</h1>
+    </div>
+    <form asp-action="Create" method="post">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <input asp-for="Name" class="form-control" placeholder="enter name..."/>
+                    </div>
+                    <div class="form-group">
+                        <label>Price:</label>
+                        <input asp-for="Price" class="form-control" placeholder="enterr price"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex">
+                <button type="submit" class="btn btn-primary mx-2">Create</button>
+                <a asp-action="Index" class="btn btn-warning">Back to List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

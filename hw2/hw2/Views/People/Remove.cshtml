@@ -1,0 +1,53 @@
+﻿@model IEnumerable<hw2.Models.TbPerson>
+
+@{
+    ViewData["Title"] = "Remove";
+}
+
+<h1>Remove</h1>
+
+<h1>Welcome @Context.Session.GetString("username")</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                No.
+            </th>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var no = 1;
+            var id = 1000;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @no @{
+                        no++;
+                    }
+                </td>
+                <td>
+                    @id @{
+                        id++;
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Delete" asp-route-id="@item.Username">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-primary" asp-action="Menu">click here to return menu page</a>

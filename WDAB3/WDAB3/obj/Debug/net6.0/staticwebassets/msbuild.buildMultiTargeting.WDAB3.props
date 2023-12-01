@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\WDAB3.props" />
+</Project>

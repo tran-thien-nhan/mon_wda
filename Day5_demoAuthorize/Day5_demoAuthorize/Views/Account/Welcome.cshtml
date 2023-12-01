@@ -1,0 +1,12 @@
+﻿@using System.Security.Claims
+@{
+    var user = User.FindFirst(ClaimTypes.Name);
+}
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<h1>Welcome @user.Value !</h1>
+<h4><a asp-controller="Admin" asp-action="Index">go to admin</a></h4>
+<h4><a asp-controller="Account" asp-action="SignOut">Logout</a></h4>
+

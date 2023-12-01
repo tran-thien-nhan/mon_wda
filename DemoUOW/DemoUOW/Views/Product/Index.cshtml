@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DemoUOW.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr class="table-info">
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>
+                    <a class="btn btn-success" asp-action="Edit" asp-route-id="@product.Id">Edit</a> 
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
