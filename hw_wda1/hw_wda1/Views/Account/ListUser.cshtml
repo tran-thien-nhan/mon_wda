@@ -1,0 +1,36 @@
+﻿@model IEnumerable<hw_wda1.Models.AccountTb>
+
+@{
+    ViewData["Title"] = "ListUser";
+}
+
+<h1>ListUser</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @(item.Role == true ? "user" : "admin")
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

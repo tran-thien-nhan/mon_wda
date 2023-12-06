@@ -15,6 +15,8 @@ builder.Services.AddDbContext<ProductDbContext>(opts =>
     opts.UseSqlServer(builder.Configuration.GetConnectionString("MyConnection"))
 );
 
+builder.Services.AddSession();
+
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWorkRepo>();
 
@@ -32,6 +34,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthorization();
 

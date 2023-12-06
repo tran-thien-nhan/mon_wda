@@ -1,44 +1,37 @@
 ﻿using DemoUOW.IRepository;
 using DemoUOW.Models;
+using DemoUOW.Repository;
 using DemoUOW.UnitOfWorkRepository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 
 namespace DemoUOW.UnitOfWork
 {
     public class UnitOfWorkRepo : IUnitOfWork
     {
-        private IProductRepository repo;
+        private readonly ProductDbContext db;
 
-        public UnitOfWorkRepo(IProductRepository repo)
+        public UnitOfWorkRepo(ProductDbContext db, IProductRepository productRepository)
         {
-            this.repo = repo;
+            this.db = db;
+            ProductRepository = productRepository;
         }
 
-        public async Task<int> AddProductAsync(Product product)
+        public IProductRepository ProductRepository { get; private set; }
+
+        public async Task<IEnumerable<Product>> GetProductsAbovePriceAsync(int threshold)
         {
-            return await repo.AddProductAsync(product);
+            var products = await db.Products
+                .Where(x => x.Price > threshold)
+                .ToListAsync();
+
+            return products ?? Enumerable.Empty<Product>();
         }
 
-        public async Task<int> UpdateProductAsync(Product product)
+        public async Task<int> Save()
         {
-            return await repo.UpdateProductAsync(product);
-        }
-
-        public async Task<int> DeleteProductAsync(int productId)
-        {
-            return await repo.DeleteProductAsync(productId);
-        }
-
-        public async Task<Product> GetProductsAsync(int productId)
-        {
-            return await repo.GetProductsAsync(productId);
-        }
-
-        public async Task<IEnumerable<Product>> getAllProductAsync()
-        {
-            return await repo.getAllProductAsync();
+            return await db.SaveChangesAsync();
         }
     }
-
 }

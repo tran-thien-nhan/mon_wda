@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\wda1.props" />
+</Project>

@@ -1,4 +1,6 @@
 ﻿using DemoUOW.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DemoUOW.IRepository
 {

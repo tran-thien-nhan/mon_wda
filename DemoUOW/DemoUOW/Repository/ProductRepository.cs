@@ -1,5 +1,7 @@
 ﻿using DemoUOW.IRepository;
 using DemoUOW.Models;
+using DemoUOW.UnitOfWork;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace DemoUOW.Repository
@@ -15,9 +17,9 @@ namespace DemoUOW.Repository
 
         public async Task<int> AddProductAsync(Product product)
         {
-            db.Products.Add(product);
             try
             {
+                db.Products.Add(product);
                 return await db.SaveChangesAsync();
             }
             catch (Exception ex)
