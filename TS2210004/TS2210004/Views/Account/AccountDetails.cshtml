@@ -1,0 +1,54 @@
+﻿@model TS2210004.Models.Account
+
+@{
+    ViewData["Title"] = "AccountDetails";
+}
+
+<h1 class="text-center">AccountDetails</h1>
+@if (ViewBag.SuccessMessage != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.SuccessMessage
+    </div>
+}
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<div class="card mx-auto" style="width: 18rem;">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUW0u5Eiiy3oM6wcpeEE6sXCzlh8G-tX1_Iw&usqp=CAU" class="card-img-top img-fluid" alt="Account Image">
+    <div class="card-body">
+        <h4 class="card-title text-center">Account Details</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.AccountName)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.AccountName)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.PinCode)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.PinCode)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Balance)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Balance)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Role)
+            </dt>
+            <dd class="col-sm-8">
+                @(Model.Role ? "Admin" : "User")
+            </dd>
+        </dl>
+    </div>
+</div>

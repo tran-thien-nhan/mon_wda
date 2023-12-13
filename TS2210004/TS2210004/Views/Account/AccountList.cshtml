@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TS2210004.Models.Account>
+
+@{
+    ViewData["Title"] = "AccountList";
+}
+
+<h1>AccountList</h1>
+@if (ViewBag.SuccessMessage != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.SuccessMessage
+    </div>
+}
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 mb-4">
+            <div class="card" style="width: 100%;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUW0u5Eiiy3oM6wcpeEE6sXCzlh8G-tX1_Iw&usqp=CAU" class="card-img-top" alt="Account Image">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.AccountName)</h5>
+                    <p class="card-text">
+                        <strong>Account No:</strong> @Html.DisplayFor(modelItem => item.AccountNo)<br />
+                        <strong>Balance:</strong> @Html.DisplayFor(modelItem => item.Balance)<br />
+                        <strong>Role:</strong> @(item.Role ? "Admin" : "User")
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
