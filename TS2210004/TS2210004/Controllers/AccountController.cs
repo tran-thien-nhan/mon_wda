@@ -84,18 +84,17 @@ namespace TS2210004.Controllers
                 if (!await IsAccountNoUnique(account.AccountNo))
                 {
                     db.Accounts.Add(account);
+                    ViewBag.SignUpSuccess = "Đăng ký thành công!";
                     await db.SaveChangesAsync();
-                    ViewBag.SuccessMessage = "đăng ký thành công!";
-                    return RedirectToAction("Login");
+                    return View();
                 }
                 else
                 {
                     ViewBag.ErrorMessage = "đăng ký thất bại!";
                     return View();
                 }
-
             }
-            return RedirectToAction("Login", account);
+            return View("Login");
         }
 
         public IActionResult Logout()

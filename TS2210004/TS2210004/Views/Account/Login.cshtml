@@ -1,11 +1,10 @@
 ﻿@{
     ViewData["Title"] = "Login";
 }
-
-@if (ViewBag.SuccessMessage != null)
+@if (ViewBag.SignUpSuccess != null)
 {
     <div class="alert alert-success">
-        @ViewBag.SuccessMessage
+        @ViewBag.SignUpSuccess
     </div>
 }
 
@@ -15,7 +14,6 @@
         @ViewBag.ErrorMessage
     </div>
 }
-
 <div class="card mx-auto mt-5" style="max-width: 400px;">
     <div class="card-body">
         <h2 class="card-title text-center">LOGIN PAGE</h2>
